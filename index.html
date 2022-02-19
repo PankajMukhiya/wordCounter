@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Counter - Word & Character </title>
+</head>
+<body>
+    <h1>Word and Character Counter</h1>
+    <textarea id="textArea" cols="30" rows="10"></textarea>
+    <p>
+        <span id="word">0</span> Words  and  
+        <span id="char">0</span> Characters
+
+    </p>
+<!-- Adding both style tag and script tag in html file because of this is a small project      -->
+<style>
+body{
+    padding: 50px 100px;
+
+}
+h1{
+    text-align: center;
+    background: #7952b3;
+    color: white;
+    margin: 0px;
+}
+p{
+    text-align: center;
+    background: #7952b3;
+    color: white;
+    margin: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    
+}
+#textArea{
+    width: 99.25%;
+    border-color: #7952b3;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    /* border-radius: 10px; */
+    border-width: 3px;
+}
+/* span{
+    border: 5px;
+    background: #000;
+} */
+</style>  
+<script>
+    let textArea1 =  document.getElementById('textArea')
+    var selectSpan  =  document.getElementsByTagName('span')
+    // console.log(selectSpan);
+
+    textArea1.addEventListener('focus', function () {
+        // console.log("click")
+        textArea1.style.background = '#6ce7e7';
+    });
+
+    textArea1.addEventListener('input', function () {
+        let text  =  this.value;  //  this is the entered value by the user
+        // console.log(text);
+
+        let charNum  = text.length;
+        // console.log(charNum);
+        let selectChar = document.getElementById('char')
+        // console.log(selectChar);
+        selectChar.innerText = charNum;
+        
+        text = text.trim() // remove extra spaces in starting and ending of text area 
+        let words  = text.split(" "); // split the word by 1 space 
+        // console.log(words)
+        // let wordsNum = words.length;
+        words  = words.filter(function (element) {     //here these filter method remove all extra space in middle 
+            return  element != ""
+        })
+        let wordsNum = words.length;
+        let selectWord = document.getElementById('word')
+        selectWord.innerText = wordsNum;
+
+    });
+
+</script>  
+</body>
+</html>
